@@ -109,10 +109,10 @@ class TestHistoryAction(SIAReadWriteUserMixin, SignalsBaseApiTestCase):
 
         what_in_history = [entry['what'] for entry in data]
         self.assertIn('UPDATE_CATEGORY_ASSIGNMENT', what_in_history)
-        self.assertEquals(1, what_in_history.count('UPDATE_CATEGORY_ASSIGNMENT'))
+        self.assertEqual(1, what_in_history.count('UPDATE_CATEGORY_ASSIGNMENT'))
 
         self.assertIn('UPDATE_SLA', what_in_history)
-        self.assertEquals(1, what_in_history.count('UPDATE_SLA'))
+        self.assertEqual(1, what_in_history.count('UPDATE_SLA'))
 
         actions_in_history = [entry['action'] for entry in data]
         self.assertIn('Servicebelofte:', actions_in_history)
@@ -148,10 +148,10 @@ class TestHistoryAction(SIAReadWriteUserMixin, SignalsBaseApiTestCase):
 
         what_in_history = [entry['what'] for entry in data]
         self.assertIn('UPDATE_CATEGORY_ASSIGNMENT', what_in_history)
-        self.assertEquals(6, what_in_history.count('UPDATE_CATEGORY_ASSIGNMENT'))
+        self.assertEqual(6, what_in_history.count('UPDATE_CATEGORY_ASSIGNMENT'))
 
         self.assertIn('UPDATE_SLA', what_in_history)
-        self.assertEquals(1, what_in_history.count('UPDATE_SLA'))
+        self.assertEqual(1, what_in_history.count('UPDATE_SLA'))
 
         sla_description_in_history = [entry['description'] for entry in data if entry['action'] == 'Servicebelofte:']  # noqa
         self.assertEqual(self.signal.category_assignments.all().order_by('created_at')[0].category.handling_message,
